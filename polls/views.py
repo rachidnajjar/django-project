@@ -1,6 +1,4 @@
-#from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import render
 
 from .models import Question
 
@@ -8,11 +6,8 @@ from .models import Question
 # Create your views here.
 def index(request):
     listeQuestions = Question.objects.order_by('-datePublication')[:5]
-    template = loader.get_template('polls/index.html')
-    context = {
-        'listeQuestions': listeQuestions,
-    }
-    return HttpResponse(template.render(context, request))
+    context = {'listeQuestions': listeQuestions}
+    return render(request, 'polls/index.html', context)
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)
