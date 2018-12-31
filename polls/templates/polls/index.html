@@ -1,0 +1,9 @@
+{% if listeQuestions %}
+    <ul>
+    {% for question in listeQuestions %}
+        <li><a href="/polls/{{question.id}}/">{{question.texte}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
